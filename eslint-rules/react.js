@@ -45,6 +45,10 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
     'react/display-name': ['off', { ignoreTranspilerName: false }],
 
+    // Forbid certain props on DOM Nodes
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-dom-props.md
+    'react/forbid-dom-props': ['off', { forbid: [] }],
+
     // Forbid certain propTypes (any, array, object)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md
     'react/forbid-prop-types': ['error', {
@@ -56,6 +60,10 @@ module.exports = {
     // Enforce boolean attributes notation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
     'react/jsx-boolean-value': ['error', 'never', { always: [] }],
+
+    // Ensures inline tags are not rendered without spaces between them
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-child-element-spacing.md
+    'react/jsx-child-element-spacing': 'off',
 
     // Validate closing bracket location in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
@@ -87,10 +95,6 @@ module.exports = {
     // Limit maximum of props on a single line in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
     'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
-
-    // Prevent using this.state within a this.setState
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-access-state-in-setstate.md
-    'react/no-access-state-in-setstate': 'error',
 
     // Prevent usage of .bind() in JSX props
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
@@ -132,6 +136,12 @@ module.exports = {
       sortShapeProp: false,
     }],
 
+    // Enforce defaultProps declarations alphabetical sorting
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-default-props.md
+    'react/jsx-sort-default-props': ['off', {
+      ignoreCase: true,
+    }],
+
     // Deprecated in favor of react/jsx-sort-props
     'react/jsx-sort-prop-types': 'off',
 
@@ -153,6 +163,10 @@ module.exports = {
     // Prevent variables used in JSX to be incorrectly marked as unused
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-vars.md
     'react/jsx-uses-vars': 'error',
+
+    // Prevent using this.state within a this.setState
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-access-state-in-setstate.md
+    'react/no-access-state-in-setstate': 'error',
 
     // Prevent usage of dangerous JSX properties
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-danger.md
@@ -194,6 +208,10 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md
     'react/no-string-refs': 'error',
 
+    // Prevent this from being used in stateless functional components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-this-in-sfc.md
+    'react/no-this-in-sfc': 'error',
+
     // Prevent usage of unknown DOM property
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md
     'react/no-unknown-property': 'error',
@@ -231,12 +249,14 @@ module.exports = {
     'react/sort-comp': ['error', {
       order: [
         'static-methods',
+        'instance-variables',
         'lifecycle',
         '/^on.+$/',
         'getters',
         'setters',
         '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
         'everything-else',
+        'instance-methods',
         '/^render.+$/',
         'render',
       ],
@@ -265,6 +285,10 @@ module.exports = {
     // Enforce JSX indentation
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
     'react/jsx-indent': ['error', 2],
+
+    // Validate JSX maximum depth
+    // https://https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-depth.md
+    'react/jsx-max-depth': 'off',
 
     // Disallow target="_blank" on links
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md
@@ -328,6 +352,7 @@ module.exports = {
       closingSlash: 'never',
       beforeSelfClosing: 'always',
       afterOpening: 'never',
+      beforeClosing: 'never',
     }],
 
     // Enforce spaces before the closing bracket of self-closing JSX elements
@@ -345,7 +370,7 @@ module.exports = {
 
     // Forbids using non-exported propTypes
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-foreign-prop-types.md
-    'react/forbid-foreign-prop-types': 'off',
+    'react/forbid-foreign-prop-types': ['error', { allowInPropTypes: true }],
 
     // Prevent void DOM elements from receiving children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
@@ -368,6 +393,7 @@ module.exports = {
     'react/boolean-prop-naming': ['off', {
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
       rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+      message: '',
     }],
 
     // Prevents common casing typos

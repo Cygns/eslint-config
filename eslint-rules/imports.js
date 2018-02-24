@@ -206,5 +206,23 @@ module.exports = {
     // This rule enforces that all exports are declared at the bottom of the file.
     // https://github.com/benmosher/eslint-plugin-import/blob/98acd6afd04dcb6920b81330114e146dc8532ea4/docs/rules/exports-last.md
     'import/exports-last': 'off',
+
+    // Reports when named exports are not grouped together in a single export declaration
+    // or when multiple assignments to CommonJS module.exports or exports object are present
+    // in a single file.
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/group-exports.md
+    'import/group-exports': 'off',
+
+    // Prohibit default exports
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-default-export.md
+    'import/no-default-export': 'off',
+
+    // Forbid a module from importing itself
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-self-import.md
+    'import/no-self-import': 'error',
+
+    // Ensures that there are no useless path segments
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-useless-path-segments.md
+    'import/no-useless-path-segments': 'error',
   },
 };
