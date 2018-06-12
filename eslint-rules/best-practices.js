@@ -156,7 +156,8 @@ module.exports = {
     'no-param-reassign': ['error', {
       props: true,
       ignorePropertyModificationsFor: [
-        'acc', // for reduce accumulators
+        'acc', // for reduce
+        'accumulator', // for reduce accumulators
         'e', // for e.returnvalue
         'ctx', // for Koa routing
         'req', // for Express requests

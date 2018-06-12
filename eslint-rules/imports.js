@@ -13,11 +13,12 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.json'],
+        extensions: ['.mjs', '.js', '.json'],
       },
     },
     'import/extensions': [
       '.js',
+      '.mjs',
       '.jsx',
     ],
     'import/core-modules': [
@@ -73,9 +74,10 @@ module.exports = {
         'tests/**', // also common npm pattern
         'spec/**', // mocha, rspec-like pattern
         '**/__tests__/**', // jest pattern
+        '**/__mocks__/**', // jest pattern
         'test.{js,jsx}', // repos with a single test file
         'test-*.{js,jsx}', // repos with multiple top-level test files
-        '**/*.{test,spec}.{js,jsx}', // tests where the extension denotes that it is a test
+        '**/*{.,_}{test,spec}.{js,jsx}', // tests where the extension or filename suffix denotes that it is a test
         '**/jest.config.js', // jest config
         '**/webpack.config.js', // webpack config
         '**/webpack.config.*.js', // webpack config
@@ -130,9 +132,10 @@ module.exports = {
 
     // Ensure consistent use of file extension within the import path
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    'import/extensions': ['error', 'always', {
+    'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
-      jsx: 'always',
+      mjs: 'never',
+      jsx: 'never',
     }],
 
     // Enforce a convention in module import order
@@ -193,7 +196,7 @@ module.exports = {
     'import/no-named-default': 'error',
 
     // Reports if a module's default export is unnamed
-    // https://github.com/benmosher/eslint-plugin-import/blob/d9b712ac7fd1fddc391f7b234827925c160d956f/docs/rules/no-anonymous-default-export.md
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-anonymous-default-export.md
     'import/no-anonymous-default-export': ['off', {
       allowArray: false,
       allowArrowFunction: false,
@@ -204,7 +207,7 @@ module.exports = {
     }],
 
     // This rule enforces that all exports are declared at the bottom of the file.
-    // https://github.com/benmosher/eslint-plugin-import/blob/98acd6afd04dcb6920b81330114e146dc8532ea4/docs/rules/exports-last.md
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/exports-last.md
     'import/exports-last': 'off',
 
     // Reports when named exports are not grouped together in a single export declaration
@@ -221,8 +224,19 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-self-import.md
     'import/no-self-import': 'error',
 
+    // Forbid cyclical dependencies between modules
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-cycle.md
+    'import/no-cycle': ['error', { maxDepth: Infinity }],
+
     // Ensures that there are no useless path segments
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-useless-path-segments.md
     'import/no-useless-path-segments': 'error',
+
+    // dynamic imports require a leading comment with a webpackChunkName
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/dynamic-import-chunkname.md
+    'import/dynamic-import-chunkname': ['off', {
+      importFunctions: [],
+      webpackChunknameFormat: '[0-9a-zA-Z-_/.]+',
+    }],
   },
 };

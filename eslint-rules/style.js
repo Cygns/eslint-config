@@ -140,7 +140,7 @@ module.exports = {
 
     // specify whether double or single quotes should be used in JSX attributes
     // https://eslint.org/docs/rules/jsx-quotes
-    'jsx-quotes': ['off', 'prefer-single'],
+    'jsx-quotes': ['error', 'prefer-single'],
 
     // enforces spacing between keys and values in object literal properties
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
@@ -292,7 +292,7 @@ module.exports = {
     'no-multi-assign': 'error',
 
     // disallow multiple empty lines and only one newline at the end
-    'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
+    'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 0 }],
 
     // disallow negated conditions
     // https://eslint.org/docs/rules/no-negated-condition
@@ -370,6 +370,8 @@ module.exports = {
     'object-curly-newline': ['error', {
       ObjectExpression: { consistent: true },
       ObjectPattern: { consistent: true },
+      ImportDeclaration: { consistent: true },
+      ExportDeclaration: { consistent: true },
     }],
 
     // enforce "same line" or "multiple line" on object properties.
