@@ -23,13 +23,17 @@ module.exports = {
         'getDefaultProps',
         'getChildContext',
         'componentWillMount',
+        'UNSAFE_componentWillMount',
         'componentDidMount',
         'componentWillReceiveProps',
+        'UNSAFE_componentWillReceiveProps',
         'shouldComponentUpdate',
         'componentWillUpdate',
+        'UNSAFE_componentWillUpdate',
         'componentDidUpdate',
         'componentWillUnmount',
         'componentDidCatch',
+        'getSnapshotBeforeUpdate',
       ],
     }],
 
@@ -101,7 +105,9 @@ module.exports = {
     'react/jsx-no-bind': ['error', {
       ignoreRefs: true,
       allowArrowFunctions: true,
+      allowFunctions: false,
       allowBind: false,
+      ignoreDOMComponents: true,
     }],
 
     // Prevent duplicate props in JSX
@@ -407,6 +413,10 @@ module.exports = {
     // Enforce curly braces or disallow unnecessary curly braces in JSX props and/or children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-brace-presence.md
     'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+
+    // Prevent usage of UNSAFE_ methods
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unsafe.md
+    'react/no-unsafe': 'off',
   },
 
   settings: {

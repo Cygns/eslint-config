@@ -42,6 +42,10 @@ module.exports = {
     // make sure for-in loops have an if statement
     'guard-for-in': 'error',
 
+    // enforce a maximum number of classes per file
+    // https://eslint.org/docs/rules/max-classes-per-file
+    'max-classes-per-file': ['off', 1],
+
     // disallow the use of alert, confirm, and prompt
     'no-alert': 'warn',
 
@@ -156,7 +160,7 @@ module.exports = {
     'no-param-reassign': ['error', {
       props: true,
       ignorePropertyModificationsFor: [
-        'acc', // for reduce
+        'acc', // for reduce accumulators
         'accumulator', // for reduce accumulators
         'e', // for e.returnvalue
         'ctx', // for Koa routing
@@ -256,6 +260,10 @@ module.exports = {
     // disallow unnecessary .call() and .apply()
     'no-useless-call': 'off',
 
+    // Disallow unnecessary catch clauses
+    // https://eslint.org/docs/rules/no-useless-catch
+    'no-useless-catch': 'error',
+
     // disallow useless string concatenation
     // https://eslint.org/docs/rules/no-useless-concat
     'no-useless-concat': 'error',
@@ -282,12 +290,20 @@ module.exports = {
     // https://eslint.org/docs/rules/prefer-promise-reject-errors
     'prefer-promise-reject-errors': ['error', { allowEmptyReject: true }],
 
+    // Suggest using named capture group in regular expression
+    // https://eslint.org/docs/rules/prefer-named-capture-group
+    'prefer-named-capture-group': 'off',
+
     // require use of the second argument for parseInt()
     radix: 'error',
 
     // require `await` in `async function`
     // https://eslint.org/docs/rules/require-await
     'require-await': 'warn',
+
+    // Enforce the use of u flag on RegExp
+    // https://eslint.org/docs/rules/require-unicode-regexp
+    'require-unicode-regexp': 'off',
 
     // requires to declare all vars on top of their containing scope
     'vars-on-top': 'error',

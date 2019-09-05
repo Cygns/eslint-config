@@ -3,12 +3,11 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: '2018',
     sourceType: 'module',
     ecmaFeatures: {
       generators: false,
       objectLiteralDuplicateProperties: false,
-      experimentalObjectRestSpread: true,
     },
   },
 
@@ -155,6 +154,7 @@ module.exports = {
     // https://eslint.org/docs/rules/sort-imports
     'sort-imports': ['off', {
       ignoreCase: false,
+      ignoreDeclarationSort: false,
       ignoreMemberSort: false,
       memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
     }],

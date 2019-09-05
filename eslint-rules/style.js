@@ -19,7 +19,10 @@ module.exports = {
     'brace-style': ['error', '1tbs', { allowSingleLine: true }],
 
     // require camel case names
-    camelcase: ['error', { properties: 'never' }],
+    camelcase: ['error', {
+      properties: 'never',
+      ignoreDestructuring: false,
+    }],
 
     // enforce or disallow capitalization of the first letter of a comment
     // https://eslint.org/docs/rules/capitalized-comments
@@ -83,6 +86,7 @@ module.exports = {
     // https://eslint.org/docs/rules/func-name-matching
     'func-name-matching': ['off', 'always', {
       includeCommonJSModuleExports: false,
+      considerPropertyDescriptor: false,
     }],
 
     // require function expressions to have a name
@@ -197,6 +201,15 @@ module.exports = {
       max: 300,
       skipBlankLines: true,
       skipComments: true,
+    }],
+
+    // enforce a maximum function length
+    // https://eslint.org/docs/rules/max-lines-per-function
+    'max-lines-per-function': ['off', {
+      max: 50,
+      skipBlankLines: true,
+      skipComments: true,
+      IIFEs: true,
     }],
 
     // specify the maximum depth callbacks can be nested
@@ -396,11 +409,19 @@ module.exports = {
     'operator-linebreak': ['error', 'after'],
 
     // disallow padding within blocks
-    'padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
+    'padded-blocks': ['error', {
+      blocks: 'never',
+      classes: 'never',
+      switches: 'never',
+    }],
 
     // Require or disallow padding lines between statements
     // https://eslint.org/docs/rules/padding-line-between-statements
     'padding-line-between-statements': 'off',
+
+    // Prefer use of an object spread over Object.assign
+    // https://eslint.org/docs/rules/prefer-object-spread
+    'prefer-object-spread': 'off',
 
     // require quotes around object literal property names
     // https://eslint.org/docs/rules/quote-props.html
@@ -450,10 +471,10 @@ module.exports = {
     // https://eslint.org/docs/rules/space-unary-ops
     'space-unary-ops': ['error', {
       words: true,
-      nonwords: true,
+      nonwords: false,
       overrides: {
-        '+': false,
-        '-': false,
+        '++': true,
+        '--': true,
       },
     }],
 
