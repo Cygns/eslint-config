@@ -6,6 +6,7 @@
     "./eslint-rules/imports.js",
     "./eslint-rules/node.js",
     "./eslint-rules/react.js",
+    "./eslint-rules/react-hooks.js",
     "./eslint-rules/strict.js",
     "./eslint-rules/style.js",
     "./eslint-rules/variables.js"

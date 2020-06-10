@@ -77,6 +77,9 @@ module.exports = {
     // enforce newline at the end of file, with no multiple empty lines
     'eol-last': ['error', 'always'],
 
+    // https://eslint.org/docs/rules/function-call-argument-newline
+    'function-call-argument-newline': 'off',
+
     // enforce spacing between functions and their invocations
     // https://eslint.org/docs/rules/func-call-spacing
     'func-call-spacing': ['error', 'always'],
@@ -304,8 +307,9 @@ module.exports = {
     // https://eslint.org/docs/rules/no-multi-assign
     'no-multi-assign': 'error',
 
-    // disallow multiple empty lines and only one newline at the end
-    'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 0 }],
+    // disallow multiple empty lines, only one newline at the end, and no new lines at the beginning
+    // https://eslint.org/docs/rules/no-multiple-empty-lines
+    'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 0, maxEOF: 0 }],
 
     // disallow negated conditions
     // https://eslint.org/docs/rules/no-negated-condition
@@ -413,15 +417,21 @@ module.exports = {
       blocks: 'never',
       classes: 'never',
       switches: 'never',
+    }, {
+      allowSingleLineBlocks: true,
     }],
 
     // Require or disallow padding lines between statements
     // https://eslint.org/docs/rules/padding-line-between-statements
     'padding-line-between-statements': 'off',
 
+    // Disallow the use of Math.pow in favor of the ** operator
+    // https://eslint.org/docs/rules/prefer-exponentiation-operator
+    'prefer-exponentiation-operator': 'off',
+
     // Prefer use of an object spread over Object.assign
     // https://eslint.org/docs/rules/prefer-object-spread
-    'prefer-object-spread': 'off',
+    'prefer-object-spread': 'error',
 
     // require quotes around object literal property names
     // https://eslint.org/docs/rules/quote-props.html
@@ -483,11 +493,11 @@ module.exports = {
     'spaced-comment': ['error', 'always', {
       line: {
         exceptions: ['-', '+'],
-        markers: ['=', '!'], // space here to support sprockets directives
+        markers: ['=', '!', '/'], // space here to support sprockets directives, slash for TS /// comments
       },
       block: {
         exceptions: ['-', '+'],
-        markers: ['=', '!'], // space here to support sprockets directives
+        markers: ['=', '!', ':', '::'], // space here to support sprockets directives and flow comment types
         balanced: true,
       },
     }],

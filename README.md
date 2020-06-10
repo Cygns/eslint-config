@@ -4,7 +4,7 @@ ESLint Configuration for React and Node.js development, with the following param
 
 - Javascript style to support highly readable code
 - 120 character lines
-- ES2015 - ES2017 features including async / await
+- Current ECMAScript (ES20xx) features
 
 ## Acknowledgements
 
@@ -13,7 +13,7 @@ ESLint Configuration for React and Node.js development, with the following param
 *AirBnb* for the base configuration and reasoning for configuration options.
 [GitHub Repo](https://github.com/airbnb/javascript)
 
-The contributors to the ESLint plugins for React and imports.
+The contributors to the ESLint plugins for React, hooks and imports.
 
 ## License
 

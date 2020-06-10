@@ -4,7 +4,7 @@ module.exports = {
     'init-declarations': 'off',
 
     // disallow the catch clause parameter name being the same as a variable in the outer scope
-    'no-catch-shadow': 'error',
+    'no-catch-shadow': 'off',
 
     // disallow deletion of variables
     'no-delete-var': 'error',
@@ -30,7 +30,7 @@ module.exports = {
 
     // disallow use of undefined variable
     // https://eslint.org/docs/rules/no-undefined
-    'no-undefined': 'error',
+    'no-undefined': 'off',
 
     // disallow declaration of variables that are not used in the code
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],

@@ -3,7 +3,7 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: '2018',
+    ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       generators: false,
@@ -20,9 +20,7 @@ module.exports = {
 
     // require parens in arrow function arguments
     // https://eslint.org/docs/rules/arrow-parens
-    'arrow-parens': ['error', 'as-needed', {
-      requireForBlockBody: true,
-    }],
+    'arrow-parens': ['error', 'always'],
 
     // require space before/after arrow function's arrow
     // https://eslint.org/docs/rules/arrow-spacing
@@ -109,13 +107,13 @@ module.exports = {
 
     // Prefer destructuring from arrays and objects
     // https://eslint.org/docs/rules/prefer-destructuring
-    'prefer-destructuring': ['off', {
+    'prefer-destructuring': ['error', {
       VariableDeclarator: {
         array: false,
         object: true,
       },
       AssignmentExpression: {
-        array: true,
+        array: false,
         object: true,
       },
     }, {

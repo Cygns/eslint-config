@@ -28,6 +28,9 @@ module.exports = {
     // require default case in switch statements
     'default-case': ['error', { commentPattern: '^no default$' }],
 
+    // https://eslint.org/docs/rules/default-param-last
+    'default-param-last': 'off',
+
     // encourages use of dot notation whenever possible
     'dot-notation': ['error', { allowKeywords: true }],
 
@@ -38,6 +41,10 @@ module.exports = {
     // require the use of === and !==
     // https://eslint.org/docs/rules/eqeqeq
     eqeqeq: ['error', 'always', { null: 'ignore' }],
+
+    // Require grouped accessor pairs in object literals and classes
+    // https://eslint.org/docs/rules/grouped-accessor-pairs
+    'grouped-accessor-pairs': 'off',
 
     // make sure for-in loops have an if statement
     'guard-for-in': 'error',
@@ -55,6 +62,10 @@ module.exports = {
     // disallow lexical declarations in case/default clauses
     // https://eslint.org/docs/rules/no-case-declarations.html
     'no-case-declarations': 'error',
+
+    // Disallow returning value in constructor
+    // https://eslint.org/docs/rules/no-constructor-return
+    'no-constructor-return': 'error',
 
     // disallow division operators explicitly at beginning of regular expression
     // https://eslint.org/docs/rules/no-div-regex
@@ -169,6 +180,7 @@ module.exports = {
         'res', // for Express responses
         'response', // for Express responses
         '$scope', // for Angular 1 scopes
+        'staticContext', // for ReactRouter context
       ],
     }],
 
@@ -231,7 +243,9 @@ module.exports = {
 
     // disallow self assignment
     // https://eslint.org/docs/rules/no-self-assign
-    'no-self-assign': 'error',
+    'no-self-assign': ['error', {
+      props: true,
+    }],
 
     // disallow comparisons where both sides are exactly the same
     'no-self-compare': 'error',

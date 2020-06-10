@@ -254,6 +254,7 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-comp.md
     'react/sort-comp': ['error', {
       order: [
+        'static-variables',
         'static-methods',
         'instance-variables',
         'lifecycle',
@@ -261,8 +262,8 @@ module.exports = {
         'getters',
         'setters',
         '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
-        'everything-else',
         'instance-methods',
+        'everything-else',
         '/^render.+$/',
         'render',
       ],
@@ -271,13 +272,13 @@ module.exports = {
     // Prevent missing parentheses around multilines JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md
     'react/jsx-wrap-multilines': ['error', {
-      declaration: 'parens',
-      assignment: 'parens',
-      return: 'parens',
-      arrow: 'parens',
-      condition: 'ignore',
-      logical: 'ignore',
-      prop: 'ignore',
+      declaration: 'parens-new-line',
+      assignment: 'parens-new-line',
+      return: 'parens-new-line',
+      arrow: 'parens-new-line',
+      condition: 'parens-new-line',
+      logical: 'parens-new-line',
+      prop: 'parens-new-line',
     }],
 
     // Require that the first prop in a JSX element be on a new line when the element is multiline
@@ -376,7 +377,9 @@ module.exports = {
 
     // Enforce a defaultProps definition for every prop that is not a required prop
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
-    'react/require-default-props': ['error', { forbidDefaultForRequired: true }],
+    'react/require-default-props': ['error', {
+      forbidDefaultForRequired: true,
+    }],
 
     // Forbids using non-exported propTypes
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-foreign-prop-types.md
@@ -427,7 +430,7 @@ module.exports = {
     },
     react: {
       pragma: 'React',
-      version: '16.0',
+      version: 'detect',
     },
     propWrapperFunctions: [
       'forbidExtraProps', // https://www.npmjs.com/package/airbnb-prop-types

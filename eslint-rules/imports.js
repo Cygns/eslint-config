@@ -3,7 +3,7 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: '2018',
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: [
@@ -90,6 +90,7 @@ module.exports = {
         '**/Gruntfile{,.js}', // grunt config
         '**/protractor.conf.js', // protractor config
         '**/protractor.conf.*.js', // protractor config
+        '**/karma.conf.js', // karma config
       ],
       optionalDependencies: false,
     }],
@@ -143,8 +144,7 @@ module.exports = {
     // ensure absolute imports are above relative imports and that unassigned imports are ignored
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
     'import/order': ['off', {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      'newlines-between': 'never',
+      groups: ['builtin', 'external', 'internal'],
     }],
 
     // Require a newline after the last import/require in a group
